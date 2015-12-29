@@ -34,6 +34,17 @@ module.exports = function (grunt) {
                 dest: 'build/<%= pkg.name %>.min.js'
             }
         },
+        cssmin: {
+            options: {
+                shorthandCompacting: false,
+                roundingPrecision: -1
+            },
+            target: {
+                files: {
+                    'ngProgress.min.css': ['ngProgress.css']
+                }
+            }
+        },
         jshint: {
             options: {
                 browser: true
@@ -57,6 +68,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-karma');
-    grunt.registerTask('default', ['jshint', 'karma', 'concat', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'karma', 'concat', 'uglify', 'cssmin']);
 };
